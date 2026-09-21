@@ -1,0 +1,852 @@
+:root {
+  --font-sans: 'IBM Plex Sans Variable', 'IBM Plex Sans', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-mono: ui-monospace, 'SFMono-Regular', 'JetBrains Mono', Consolas, 'Liberation Mono', Menlo, monospace;
+
+  --bg: #f8f9fa;
+  --text: #495057;
+  --text-strong: #212529;
+  --heading: #343a40;
+  --muted: #868e96;
+  --faint: #adb5bd;
+  --rule: #ced4da;
+  --surface: #e9ecef;
+  --link: #4c6ef5;
+  --link-hover: #3b5bdb;
+  --accent: #7048e8;
+  --card-shadow: 0 2px 5px rgba(0, 0, 25, 0.1), 0 5px 75px 1px rgba(0, 0, 50, 0.2);
+
+  --nav-color: rgba(248, 249, 250, 0.72);
+  --nav-color-hover: #fff;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --sidebar-width: 320px;
+  --rail: 72px;
+  --bg-blur: 14px;
+}
+
+/* ---------- Base ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---------- Scrollbars ----------
+ * Chrome ignores ::-webkit-scrollbar once the standard properties are set
+ * (and still draws arrow buttons on Linux), so only Firefox gets those.
+ */
+
+@supports not selector(::-webkit-scrollbar) {
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(73, 80, 87, 0.35) transparent;
+  }
+
+  .sidebar {
+    scrollbar-color: rgba(255, 255, 255, 0.35) transparent;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(73, 80, 87, 0.3);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(73, 80, 87, 0.55);
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.35);
+}
+
+/* ---------- Sidebar ---------- */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: var(--sidebar-width);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  isolation: isolate;
+  z-index: 100;
+  background: #3b4a5e var(--sidebar-bg) center / cover;
+}
+
+/* The sharp photo is blurred live; tweak --bg-blur to change the strength. */
+.sidebar::before,
+.sidebar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.sidebar::before {
+  -webkit-backdrop-filter: blur(var(--bg-blur)) saturate(1.1);
+  backdrop-filter: blur(var(--bg-blur)) saturate(1.1);
+  transition: -webkit-backdrop-filter 0.9s var(--ease-out), backdrop-filter 0.9s var(--ease-out);
+}
+
+/* Soft darkening so light text stays legible over bright patches */
+.sidebar::after {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.05) 45%, rgba(0, 0, 0, 0.35));
+}
+
+.top-container {
+  flex: 1;
+  padding: 48px 16px;
+  text-align: center;
+}
+
+.site-title-container {
+  display: block;
+}
+
+.site-logo {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid #f1f3f5;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-out), box-shadow 0.6s var(--ease-out);
+}
+
+.site-title-container:hover .site-logo {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+}
+
+.site-title {
+  display: block;
+  padding: 28px 0;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  color: #f1f3f5;
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.35);
+}
+
+.menu-btn {
+  display: none;
+}
+
+.site-nav {
+  display: table; /* shrink to text width so the underline fits the word */
+  margin: 16px auto;
+  padding: 4px 2px;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--nav-color);
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.35);
+  transition: color 0.4s var(--ease-out);
+}
+
+.site-nav-icon {
+  display: none;
+}
+
+.site-nav-label {
+  position: relative;
+  display: inline-block;
+}
+
+.site-nav-label::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0.04em; /* compensate for trailing letter-spacing */
+  bottom: -2px;
+  height: 2px;
+  border-radius: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s var(--ease-out);
+}
+
+.site-nav:hover,
+.site-nav.active {
+  color: var(--nav-color-hover);
+}
+
+.site-nav:hover .site-nav-label::after,
+.site-nav.active .site-nav-label::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.bottom-container {
+  padding: 24px 16px;
+  font-size: 12px;
+  color: #dee2e6;
+}
+
+.site-description {
+  padding: 16px 0;
+}
+
+.bottom-container a {
+  color: #fff;
+}
+
+.bottom-container .rss svg {
+  vertical-align: -1px;
+}
+
+@keyframes nav-in {
+  from {
+    opacity: 0;
+    transform: translateX(-14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes content-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- Main area ---------- */
+
+.main-container {
+  margin-left: var(--sidebar-width);
+}
+
+.content-container {
+  max-width: 1064px;
+  margin: 0 auto;
+  padding: 48px 32px;
+  animation: content-in 0.8s var(--ease-out) both;
+}
+
+.page-title {
+  padding-bottom: 48px;
+  font-size: 32px;
+  color: var(--text);
+}
+
+.empty-state {
+  color: var(--muted);
+}
+
+/* Post list */
+
+.post-item {
+  display: flex;
+  padding-bottom: 32px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.post-item:last-of-type {
+  border-bottom: none;
+}
+
+.post-item .left {
+  flex: 1;
+}
+
+.post-item .post-title {
+  font-size: 24px;
+  transition: color 0.3s;
+}
+
+.post-item .post-title:hover {
+  color: var(--text-strong);
+}
+
+.post-item .post-date,
+.post-detail .post-date {
+  display: block;
+}
+
+.post-item .post-date {
+  padding: 24px 0;
+  font-size: 18px;
+  color: var(--faint);
+}
+
+.post-item .post-abstract {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.post-item .right {
+  flex-shrink: 0;
+  width: 38.2%;
+  margin-left: 24px;
+}
+
+.feature-container {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 3px;
+  box-shadow: var(--card-shadow);
+}
+
+/* Post detail */
+
+.post-detail {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.post-detail .post-title {
+  font-size: 40px;
+}
+
+.post-detail .post-date {
+  padding: 24px 0;
+  font-size: 18px;
+  color: var(--faint);
+}
+
+.post-detail .feature-container {
+  margin-bottom: 24px;
+}
+
+.post-tags {
+  margin-top: 8px;
+}
+
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+  margin: 32px 0 16px;
+  color: var(--heading);
+}
+
+.post-content p {
+  margin: 0 0 24px;
+  font-size: 18px;
+  line-height: 1.725;
+}
+
+.post-content a {
+  color: var(--link);
+  border-bottom: 1px dotted currentColor;
+  transition: color 0.3s;
+}
+
+.post-content a:hover {
+  color: var(--link-hover);
+}
+
+.post-content img {
+  display: block;
+  margin: 24px auto;
+  border-radius: 2px;
+  box-shadow: var(--card-shadow);
+}
+
+.post-content :not(pre) > code {
+  padding: 0 4px;
+  margin: 0 2px;
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid #dee2e6;
+  border-radius: 3px;
+}
+
+.post-content pre {
+  margin: 0 0 24px;
+  padding: 1.1em 1.25em;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.5;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+.post-content blockquote {
+  margin: 0 0 24px;
+  padding: 16px;
+  background: var(--surface);
+  border-left: 3px solid var(--accent);
+  border-radius: 2px;
+}
+
+.post-content blockquote p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.post-content ul,
+.post-content ol {
+  padding-left: 24px;
+  margin: 0 0 24px;
+  font-size: 18px;
+  line-height: 1.725;
+}
+
+.post-content table {
+  display: block;
+  margin: 1rem 0;
+  overflow-x: auto;
+  border-collapse: collapse;
+}
+
+.post-content td,
+.post-content th {
+  padding: 0.6em 1em;
+  border: 1px solid #dfe2e5;
+}
+
+.post-content em {
+  color: var(--muted);
+}
+
+.post-content hr {
+  height: 0;
+  margin: 0 0 24px;
+  border: 0;
+  border-top: 2px solid #efefef;
+}
+
+/* Tags */
+
+.tag {
+  display: inline-block;
+  margin: 16px 16px 16px 0;
+  padding: 8px 16px;
+  font-size: 14px;
+  line-height: 1.2;
+  color: var(--muted);
+  background: var(--surface);
+  border-radius: 16px;
+  transition: all 0.3s;
+}
+
+.tag:hover {
+  color: var(--text);
+  background: #dee2e6;
+  transform: translateY(-3px);
+}
+
+.tag-count {
+  margin-left: 6px;
+  opacity: 0.6;
+}
+
+/* Previous / next */
+
+.next-post {
+  margin: 32px 0;
+  padding: 24px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.next-post .next {
+  margin-bottom: 16px;
+  color: var(--rule);
+}
+
+.next-post .post-title {
+  font-size: 24px;
+}
+
+/* Archives */
+
+.archives-container {
+  padding-bottom: 32px;
+}
+
+.archives-container .year {
+  margin: 16px 0;
+  padding-bottom: 16px;
+  font-size: 16px;
+  color: var(--muted);
+  border-bottom: 1px solid var(--rule);
+}
+
+.archives-container .post {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  padding-bottom: 16px;
+}
+
+.archives-container .post .date {
+  flex: none;
+  font-size: 14px;
+  color: var(--faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.archives-container .post .post-title {
+  font-size: 18px;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.archives-container .post .post-title:hover {
+  color: var(--text-strong);
+}
+
+/* ---------- Desktop ---------- */
+
+@media (min-width: 801px) {
+  /* Stagger the nav items in once on page load */
+  .site-nav {
+    animation: nav-in 0.8s var(--ease-out) both;
+    animation-delay: calc(0.25s + var(--i, 0) * 0.09s);
+  }
+}
+
+/* ---------- Desktop with a mouse: collapsible icon rail ----------
+ * The sidebar rests as a narrow rail and expands over the page on hover or
+ * keyboard focus. Contents keep the full width so nothing reflows while the
+ * width animates; the rail simply clips them. Touch screens can't hover, so
+ * they keep the full sidebar.
+ */
+
+@media (min-width: 801px) and (hover: hover) {
+  .sidebar {
+    width: var(--rail);
+    transition: width 0.45s var(--ease-out), box-shadow 0.45s var(--ease-out);
+  }
+
+  .sidebar:hover,
+  .sidebar:focus-within {
+    width: var(--sidebar-width);
+    box-shadow: 0 0 48px rgba(0, 0, 0, 0.28);
+  }
+
+  /* Let a little of the photo through while the rail is open */
+  .sidebar:hover::before {
+    -webkit-backdrop-filter: blur(6px) saturate(1.1);
+    backdrop-filter: blur(6px) saturate(1.1);
+  }
+
+  .main-container {
+    margin-left: var(--rail);
+  }
+
+  .top-container,
+  .bottom-container {
+    width: var(--sidebar-width);
+    flex: none;
+    text-align: left;
+  }
+
+  .top-container {
+    flex: 1 0 auto;
+    padding: 36px 0;
+  }
+
+  .site-title-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .site-logo {
+    flex: none;
+    width: 44px;
+    height: 44px;
+    margin: 0 14px; /* centers the 44px avatar in the 72px rail */
+  }
+
+  .site-title {
+    padding: 0;
+    font-size: 24px;
+    white-space: nowrap;
+  }
+
+  .site-title,
+  .bottom-container,
+  .site-nav-label {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .sidebar:hover :is(.site-title, .bottom-container, .site-nav-label),
+  .sidebar:focus-within :is(.site-title, .bottom-container, .site-nav-label) {
+    opacity: 1;
+    transition-delay: 0.12s;
+  }
+
+  .site-navs {
+    margin-top: 40px;
+  }
+
+  .site-nav {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    min-width: var(--rail);
+    margin: 4px 0;
+    padding: 12px 4px 12px 0;
+    font-size: 17px;
+    white-space: nowrap;
+  }
+
+  .site-nav-icon {
+    display: block;
+    flex: none;
+    width: var(--rail);
+    filter: drop-shadow(0 1px 6px rgba(0, 0, 0, 0.35));
+    transition: transform 0.4s var(--ease-out);
+  }
+
+  .site-nav:hover .site-nav-icon {
+    transform: scale(1.12);
+  }
+
+  /* Active marker while collapsed: a short bar on the rail's left edge */
+  .site-nav.active {
+    box-shadow: inset 3px 0 0 var(--nav-color-hover);
+  }
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 800px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    overflow: hidden;
+    transition: height 0.55s var(--ease-out);
+  }
+
+  .sidebar.full-height {
+    height: 100vh;
+    height: 100dvh;
+  }
+
+  .top-container {
+    padding: 0 16px;
+    text-align: left;
+  }
+
+  .top-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+  }
+
+  .site-title-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .site-logo {
+    width: 48px;
+    height: 48px;
+  }
+
+  .site-title {
+    display: inline;
+    padding: 0 12px;
+    font-size: 24px;
+  }
+
+  /* Hamburger that morphs into an × */
+  .menu-btn {
+    display: block;
+    position: relative;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    background: none;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .menu-btn .line,
+  .menu-btn::before,
+  .menu-btn::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 32px;
+    height: 2px;
+    background: #e9ecef;
+    border-radius: 2px;
+    transition: transform 0.45s var(--ease-out), opacity 0.3s ease;
+  }
+
+  .menu-btn::before {
+    top: 12px;
+  }
+
+  .menu-btn .line {
+    top: 23px;
+  }
+
+  .menu-btn::after {
+    top: 34px;
+  }
+
+  .full-height .menu-btn::before {
+    transform: translateY(11px) rotate(45deg);
+  }
+
+  .full-height .menu-btn::after {
+    transform: translateY(-11px) rotate(-45deg);
+  }
+
+  .full-height .menu-btn .line {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  .site-navs {
+    padding-top: 12vh;
+  }
+
+  .site-nav {
+    margin: 22px auto;
+    font-size: 26px;
+    opacity: 0;
+  }
+
+  /* Items stagger in each time the menu opens */
+  .full-height .site-nav {
+    animation: nav-in 0.6s var(--ease-out) both;
+    animation-delay: calc(0.18s + var(--i, 0) * 0.07s);
+  }
+
+  .main-container {
+    margin-left: 0;
+  }
+
+  .content-container {
+    padding: 32px 16px;
+  }
+
+  .post-item {
+    flex-direction: column-reverse;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+  }
+
+  .post-item .right {
+    width: 100%;
+    margin: 0 0 16px;
+  }
+
+  .post-item .post-date,
+  .post-detail .post-date {
+    padding: 16px 0;
+    font-size: 16px;
+  }
+
+  .post-item .post-abstract,
+  .post-content p {
+    font-size: 16px;
+  }
+
+  .post-detail .post-title {
+    font-size: 28px;
+  }
+
+  .page-title {
+    padding-bottom: 32px;
+    font-size: 28px;
+  }
+
+  .tag {
+    margin: 8px 8px 8px 0;
+  }
+
+  .tag:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .site-nav {
+    opacity: 1;
+  }
+}

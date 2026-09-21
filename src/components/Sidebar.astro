@@ -1,0 +1,63 @@
+---
+import { Image } from 'astro:assets';
+import { Archive, Feather, Rss, Tags, User } from '@lucide/astro';
+import avatar from '../assets/avatar.png';
+import { NAV, SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const icons = { posts: Feather, archives: Archive, tags: Tags, about: User };
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+function isActive(href: string): boolean {
+  const target = href.replace(/\/$/, '') || '/';
+  if (target === '/') {
+    // Individual posts count as "Posts", except the About page which has its own entry.
+    return path === '/' || (path.startsWith('/post/') && path !== '/post/about');
+  }
+  if (target === '/tags') return path === '/tags' || path.startsWith('/tag/');
+  return path === target;
+}
+---
+
+<aside class="sidebar" id="sidebar">
+  <div class="top-container">
+    <div class="top-header-container">
+      <a class="site-title-container" href="/">
+        <Image src={avatar} alt="" width={88} height={88} class="site-logo" loading="eager" />
+        <span class="site-title">{SITE_TITLE}</span>
+      </a>
+      <button class="menu-btn" type="button" aria-label="Menu" aria-controls="sidebar" aria-expanded="false">
+        <span class="line"></span>
+      </button>
+    </div>
+    <nav class="site-navs">
+      {
+        NAV.map(({ href, label, icon }, i) => {
+          const Icon = icons[icon];
+          return (
+            <a href={href} class:list={['site-nav', { active: isActive(href) }]} style={`--i: ${i}`}>
+              <Icon class="site-nav-icon" size={20} stroke-width={1.75} aria-hidden="true" />
+              <span class="site-nav-label">{label}</span>
+            </a>
+          );
+        })
+      }
+    </nav>
+  </div>
+  <div class="bottom-container">
+    <div class="site-description">{SITE_DESCRIPTION}</div>
+    <div class="site-footer">
+      Powered by <a href="https://astro.build" target="_blank" rel="noopener">Astro</a> |
+      <a class="rss" href="/rss.xml" target="_blank"><Rss size={12} aria-hidden="true" /> RSS</a>
+    </div>
+  </div>
+</aside>
+
+<script>
+  const sidebar = document.getElementById('sidebar')!;
+  const button = sidebar.querySelector<HTMLButtonElement>('.menu-btn')!;
+  button.addEventListener('click', () => {
+    const open = sidebar.classList.toggle('full-height');
+    button.setAttribute('aria-expanded', String(open));
+  });
+</script>

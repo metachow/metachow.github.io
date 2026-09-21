@@ -1,0 +1,26 @@
+---
+import { Image } from 'astro:assets';
+import { excerpt, formatDate, type Post } from '../lib/posts';
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+const href = `/post/${post.id}/`;
+---
+
+<article class="post-item">
+  <div class="left">
+    <a href={href}><h2 class="post-title">{post.data.title}</h2></a>
+    <time class="post-date" datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+    <p class="post-abstract">{excerpt(post)}</p>
+  </div>
+  {
+    post.data.cover && (
+      <a class="right" href={href} tabindex="-1" aria-hidden="true">
+        <Image src={post.data.cover} alt="" widths={[400, 800]} sizes="(max-width: 800px) 100vw, 400px" class="feature-container" />
+      </a>
+    )
+  }
+</article>

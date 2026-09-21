@@ -1,0 +1,11 @@
+---
+import Base from '../layouts/Base.astro';
+import PostCard from '../components/PostCard.astro';
+import { getListedPosts } from '../lib/posts';
+
+const posts = await getListedPosts();
+---
+
+<Base>
+  {posts.map((post) => <PostCard post={post} />)}
+</Base>

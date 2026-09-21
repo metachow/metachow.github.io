@@ -1,0 +1,51 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { excerpt, formatDate, getListedPosts, tagSlug, type Post } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  const all = await getCollection('posts');
+  const listed = await getListedPosts();
+  return all.map((post) => {
+    const i = listed.findIndex((p) => p.id === post.id);
+    // The list is newest-first, so the "next" read is the next older post.
+    const next = i >= 0 ? listed[i + 1] : undefined;
+    return { params: { id: post.id }, props: { post, next } };
+  });
+}
+
+interface Props {
+  post: Post;
+  next?: Post;
+}
+
+const { post, next } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Base title={post.data.title} description={excerpt(post)}>
+  <article class="post-detail">
+    <h1 class="post-title">{post.data.title}</h1>
+    <time class="post-date" datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+    {post.data.cover && <Image src={post.data.cover} alt="" widths={[720, 1440]} sizes="(max-width: 800px) 100vw, 720px" class="feature-container" loading="eager" />}
+    <div class="post-content">
+      <Content />
+    </div>
+    {
+      post.data.tags.length > 0 && (
+        <div class="post-tags">
+          {post.data.tags.map((tag) => <a class="tag" href={`/tag/${tagSlug(tag)}/`}>{tag}</a>)}
+        </div>
+      )
+    }
+    {
+      next && (
+        <div class="next-post">
+          <div class="next">Next</div>
+          <a href={`/post/${next.id}/`}><h3 class="post-title">{next.data.title}</h3></a>
+        </div>
+      )
+    }
+  </article>
+</Base>
