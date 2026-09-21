@@ -1,10 +1,11 @@
 ---
 import { Image } from 'astro:assets';
-import { Archive, Feather, Rss, Tags, User } from '@lucide/astro';
+import { faArchive, faFeatherAlt, faRss, faTags, faUser } from '@fortawesome/free-solid-svg-icons';
+import FaIcon from './FaIcon.astro';
 import avatar from '../assets/avatar.png';
 import { NAV, SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
-const icons = { posts: Feather, archives: Archive, tags: Tags, about: User };
+const icons = { posts: faFeatherAlt, archives: faArchive, tags: faTags, about: faUser };
 
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 
@@ -33,10 +34,9 @@ function isActive(href: string): boolean {
     <nav class="site-navs">
       {
         NAV.map(({ href, label, icon }, i) => {
-          const Icon = icons[icon];
           return (
             <a href={href} class:list={['site-nav', { active: isActive(href) }]} style={`--i: ${i}`}>
-              <Icon class="site-nav-icon" size={20} stroke-width={1.75} aria-hidden="true" />
+              <FaIcon icon={icons[icon]} class="site-nav-icon" size={18} />
               <span class="site-nav-label">{label}</span>
             </a>
           );
@@ -48,7 +48,7 @@ function isActive(href: string): boolean {
     <div class="site-description">{SITE_DESCRIPTION}</div>
     <div class="site-footer">
       Powered by <a href="https://astro.build" target="_blank" rel="noopener">Astro</a> |
-      <a class="rss" href="/rss.xml" target="_blank"><Rss size={12} aria-hidden="true" /> RSS</a>
+      <a class="rss" href="/rss.xml" target="_blank"><FaIcon icon={faRss} size={10} /> RSS</a>
     </div>
   </div>
 </aside>
