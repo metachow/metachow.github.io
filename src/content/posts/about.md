@@ -28,7 +28,7 @@ Materials Science and Engineering, NIMS
 
 ## 🔬 Research
 
-Olfaction Sensor Group, NIMS (2022 - )  
+Olfactory Sensors Group, NIMS (2022 - )  
 [NIMS Junior Researcher](https://www.nims.go.jp/tsukuba/en/junior/) (2022 - )  
 [JST SPRING Fellow](https://www.jst.go.jp/jisedai/spring/en/index.html) (2024 - )
 
@@ -59,4 +59,5 @@ Dark Souls etc.
 
 ## 📬 Contact
 
-WkhPVS5ZaW5nY2hlbmdAbmltcy5nby5qcA==
+WkhPVS5ZaW5nY2hlbmdAbmltcy5nby5qcA==  
+[NIMS SAMURAI profile](https://samurai.nims.go.jp/profiles/zhou_yingcheng?locale=en)
