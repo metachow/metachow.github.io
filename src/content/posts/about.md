@@ -13,14 +13,14 @@ Simply, you can just call me Martin.
 30 yo, moved to Japan in 2022 and now living in Tsukuba.  
 Currently a PhD candidate.
 
-Undergraduate: South China University of Technology (2014 - 2018)  
-Food Safety and Quality.
+Undergraduate: [South China University of Technology](https://www.scut.edu.cn/en/) (2014 - 2018)  
+[Food Safety and Quality](https://www2.scut.edu.cn/food_en/).
 
-Master: University of Tsukuba (2022 - 2024)  
-Applied Physics.
+Master: [University of Tsukuba](https://www.tsukuba.ac.jp/en/) (2022 - 2024)  
+[Applied Physics](https://applphys.bk.tsukuba.ac.jp/?lang=en).
 
-PhD: University of Tsukuba (2024 - )  
-Materials Science and Engineering, NIMS
+PhD: [University of Tsukuba](https://www.tsukuba.ac.jp/en/) (2024 - )  
+[Materials Science and Engineering, NIMS](https://www.nims.go.jp/tsukuba/en/)
 
 ## 🔬 Research
 
