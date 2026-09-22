@@ -21,13 +21,19 @@ Undergraduate: South China University of Technology (2014 - 2018)
 Food Safety and Quality.
 
 Master: University of Tsukuba (2022 - 2024)  
-Applied Physics.  
-Olfaction Sensor Group
+Applied Physics.
 
 PhD: University of Tsukuba (2024 - )  
 Materials Science and Engineering, NIMS
 
-Language：  
+## 🔬 Research
+
+Olfaction Sensor Group (2022 - )  
+NIMS Junior Researcher  
+JST SPRING Fellow (2024 - )
+
+## 🗣 Language
+
 Chinese : Native  
 Cantonese : OK  
 English : OK  
