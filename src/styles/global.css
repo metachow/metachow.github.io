@@ -276,7 +276,6 @@ img {
 .site-nav.theme-toggle {
   display: flex;
   align-items: center;
-  gap: 12px;
   width: max-content;
   margin-top: 28px;
   font-family: inherit;
@@ -297,9 +296,9 @@ img {
 }
 
 .theme-switch {
-  --switch-w: 42px;
-  --switch-h: 24px;
-  --knob: 18px;
+  --switch-w: 52px;
+  --switch-h: 30px;
+  --knob: 24px;
   --pad: 3px;
   position: relative;
   display: block;
@@ -821,10 +820,6 @@ img {
 
   .theme-switch-slot {
     width: var(--rail);
-  }
-
-  .site-nav.theme-toggle {
-    gap: 0;
   }
 
   /* Active marker while collapsed: a short bar on the rail's left edge */

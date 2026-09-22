@@ -42,16 +42,15 @@ function isActive(href: string): boolean {
           );
         })
       }
-      <button class="site-nav theme-toggle" type="button" role="switch" aria-checked="false" style={`--i: ${NAV.length}`}>
+      <button class="site-nav theme-toggle" type="button" role="switch" aria-checked="false" aria-label="Dark mode" style={`--i: ${NAV.length}`}>
         <span class="theme-switch-slot">
           <span class="theme-switch" aria-hidden="true">
             <span class="theme-switch-knob">
-              <FaIcon icon={faSun} class="icon-sun" size={11} />
-              <FaIcon icon={faMoon} class="icon-moon" size={10} />
+              <FaIcon icon={faSun} class="icon-sun" size={14} />
+              <FaIcon icon={faMoon} class="icon-moon" size={13} />
             </span>
           </span>
         </span>
-        <span class="site-nav-label">Dark mode</span>
       </button>
     </nav>
   </div>
