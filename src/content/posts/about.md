@@ -44,7 +44,7 @@ Japanese : Intermediate (JLPT N3 - N2)
 
 Signature dishes:  
 Pan-seared steak  
-Beef stew  
+Bœuf bourguignon  
 All kinds of Chinese food
 
 ### 📷Photography:
