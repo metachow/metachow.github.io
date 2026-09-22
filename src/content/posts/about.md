@@ -1,6 +1,6 @@
 ---
 title: About
-date: 2021-05-21
+date: 2026-09-22
 description: Welcome, it's good to meet you here!
 listed: false
 ---
@@ -9,33 +9,33 @@ listed: false
 
 ## 🏠 About This Site
 
-Powered by [Astro](https://astro.build).  
+Powered by [Astro](https://astro.build).
 
 ## 👨‍💻 Who am I
 
 Simply, you can just call me Martin.  
-25 yo, lived in China for 25 years.  
+30 yo, moved to Japan in 2022 and now living in Tsukuba.  
+Currently a PhD candidate.
 
-Undergraduate: South China University of Technology(2014 - 2018)  
-Food Safety and Quality.  
+Undergraduate: South China University of Technology (2014 - 2018)  
+Food Safety and Quality.
 
-Graduate: University of Tsukuba(2021 - )  
+Master: University of Tsukuba (2022 - 2024)  
 Applied Physics.  
-Olfaction Sensor Group  
+Olfaction Sensor Group
+
+PhD: University of Tsukuba (2024 - )  
+Materials Science and Engineering, NIMS
 
 Language：  
 Chinese : Native  
-Cantonese ：OK  
+Cantonese : OK  
 English : OK  
-Japanese : Beginner  
+Japanese : Intermediate (JLPT N3 - N2)
 
 ## ⛹ Hobbies
 
-### 🎵Music:
-
-Rock - Midwest Emo, Math  
-Jpop -  
-EDM - Drum & Bass  
+### 🍳Cooking
 
 ### 📷Photography:
 
@@ -43,14 +43,14 @@ Camera:
 Olympus PEN-F  
 Lens:  
 M.Zuiko 45mm ƒ/1.8  
-M.Zuiko 17mm ƒ/1.8  
+M.Zuiko 17mm ƒ/1.8
 
 ### 🎮Video Games:
 
 Bioshock  
 Terraria  
-Dark Souls etc.  
+Dark Souls etc.
 
 ## 📬 Contact
 
-czIxMjAzMTFAcy50c3VrdWJhLmFjLmpw  
+WkhPVS5ZaW5nY2hlbmdAbmltcy5nby5qcA==
