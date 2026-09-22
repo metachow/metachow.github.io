@@ -40,7 +40,12 @@ Japanese : Intermediate (JLPT N3 - N2)
 
 ## ⛹ Hobbies
 
-### 🍳Cooking
+### 🍳Cooking:
+
+Signature dishes:  
+Pan-seared steak  
+Beef stew  
+All kinds of Chinese food
 
 ### 📷Photography:
 
