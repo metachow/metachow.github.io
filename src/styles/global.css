@@ -270,15 +270,23 @@ img {
   transform-origin: left;
 }
 
-/* Dark-mode switch: a latching slide switch set in the nav list. The knob
-   carries the current mode's icon and snaps past its rest point slightly
-   before settling, like a detent. On = dark. */
-.site-nav.theme-toggle {
+/* Dark-mode switch: a latching slide switch pinned to the bottom of the
+   sidebar, under the footer text. The knob carries the current mode's icon
+   and snaps past its rest point slightly before settling, like a detent.
+   On = dark. */
+.sidebar-foot {
+  flex: none;
+}
+
+.theme-toggle-row {
+  padding: 0 16px 24px;
+}
+
+.theme-toggle {
   display: flex;
   align-items: center;
-  width: max-content;
-  margin-top: 28px;
-  font-family: inherit;
+  padding: 0;
+  font: inherit;
   background: none;
   border: 0;
   cursor: pointer;
@@ -383,7 +391,7 @@ img {
 }
 
 .bottom-container {
-  padding: 24px 16px;
+  padding: 24px 16px 16px;
   font-size: 12px;
   color: #dee2e6;
 }
@@ -749,10 +757,20 @@ img {
   }
 
   .top-container,
-  .bottom-container {
+  .sidebar-foot {
     width: var(--sidebar-width);
     flex: none;
     text-align: left;
+  }
+
+  /* Footer text starts at the switch's left edge, which is centered in the rail */
+  .bottom-container {
+    padding-right: 10px;
+    padding-left: calc((var(--rail) - 52px) / 2);
+  }
+
+  .theme-toggle-row {
+    padding: 0 0 24px;
   }
 
   .top-container {

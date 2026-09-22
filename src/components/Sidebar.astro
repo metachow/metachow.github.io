@@ -42,7 +42,18 @@ function isActive(href: string): boolean {
           );
         })
       }
-      <button class="site-nav theme-toggle" type="button" role="switch" aria-checked="false" aria-label="Dark mode" style={`--i: ${NAV.length}`}>
+    </nav>
+  </div>
+  <div class="sidebar-foot">
+    <div class="bottom-container">
+      <div class="site-description">{SITE_DESCRIPTION}</div>
+      <div class="site-footer">
+        Powered by <a href="https://astro.build" target="_blank" rel="noopener">Astro</a> |
+        <a class="rss" href="/rss.xml" target="_blank"><FaIcon icon={faRss} size={10} /> RSS</a>
+      </div>
+    </div>
+    <div class="theme-toggle-row">
+      <button class="theme-toggle" type="button" role="switch" aria-checked="false" aria-label="Dark mode">
         <span class="theme-switch-slot">
           <span class="theme-switch" aria-hidden="true">
             <span class="theme-switch-knob">
@@ -52,13 +63,6 @@ function isActive(href: string): boolean {
           </span>
         </span>
       </button>
-    </nav>
-  </div>
-  <div class="bottom-container">
-    <div class="site-description">{SITE_DESCRIPTION}</div>
-    <div class="site-footer">
-      Powered by <a href="https://astro.build" target="_blank" rel="noopener">Astro</a> |
-      <a class="rss" href="/rss.xml" target="_blank"><FaIcon icon={faRss} size={10} /> RSS</a>
     </div>
   </div>
 </aside>
