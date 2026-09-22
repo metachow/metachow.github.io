@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>
+    g { fill: #3A3632; stroke: #3A3632; }
+    @media (prefers-color-scheme: dark) { g { fill: #E8E3DB; stroke: #E8E3DB; } }
+  </style>
+  <g>
+    <rect x="8" y="8" width="48" height="48" rx="10" fill="none" stroke-width="4" stroke-linejoin="round"/>
+    <circle cx="32" cy="18.5" r="3" stroke="none"/>
+    <circle cx="45.5" cy="32" r="3" stroke="none"/>
+    <circle cx="32" cy="45.5" r="3" stroke="none"/>
+    <circle cx="18.5" cy="32" r="3" stroke="none"/>
+    <path d="M32 27 37 32 32 37 27 32Z" stroke="none"/>
+  </g>
+</svg>
