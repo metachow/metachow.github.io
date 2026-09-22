@@ -14,6 +14,11 @@
   --link-hover: #3b5bdb;
   --accent: #7048e8;
   --card-shadow: 0 2px 5px rgba(0, 0, 25, 0.1), 0 5px 75px 1px rgba(0, 0, 50, 0.2);
+  --surface-hover: #dee2e6;
+  --line: #dee2e6;
+  --hr: #efefef;
+  --scroll-thumb: rgba(73, 80, 87, 0.3);
+  --scroll-thumb-hover: rgba(73, 80, 87, 0.55);
 
   --nav-color: rgba(248, 249, 250, 0.72);
   --nav-color-hover: #fff;
@@ -22,6 +27,32 @@
   --sidebar-width: 320px;
   --rail: 72px;
   --bg-blur: 14px;
+
+  color-scheme: light;
+}
+
+/* Dark palette. data-theme is set before first paint by the inline script in
+   Base.astro: the stored choice if there is one, otherwise the system setting. */
+:root[data-theme='dark'] {
+  --bg: #17191c;
+  --text: #c1c7cd;
+  --text-strong: #f1f3f5;
+  --heading: #e9ecef;
+  --muted: #8a939c;
+  --faint: #6c757d;
+  --rule: #343a40;
+  --surface: #24272b;
+  --surface-hover: #2f3338;
+  --line: #3a3f45;
+  --hr: #2b2f33;
+  --link: #91a7ff;
+  --link-hover: #bac8ff;
+  --accent: #9775fa;
+  --card-shadow: 0 2px 5px rgba(0, 0, 0, 0.35), 0 5px 60px 1px rgba(0, 0, 0, 0.45);
+  --scroll-thumb: rgba(193, 199, 205, 0.25);
+  --scroll-thumb-hover: rgba(193, 199, 205, 0.45);
+
+  color-scheme: dark;
 }
 
 /* ---------- Base ---------- */
@@ -40,6 +71,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
+  transition: background-color 0.3s ease, color 0.3s ease;
   font-family: var(--font-sans);
   font-size: 16px;
   line-height: 1.7;
@@ -75,7 +107,7 @@ img {
 @supports not selector(::-webkit-scrollbar) {
   html {
     scrollbar-width: thin;
-    scrollbar-color: rgba(73, 80, 87, 0.35) transparent;
+    scrollbar-color: var(--scroll-thumb) transparent;
   }
 
   .sidebar {
@@ -98,14 +130,14 @@ img {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(73, 80, 87, 0.3);
+  background: var(--scroll-thumb);
   border: 2px solid transparent;
   border-radius: 8px;
   background-clip: padding-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(73, 80, 87, 0.55);
+  background-color: var(--scroll-thumb-hover);
 }
 
 .sidebar::-webkit-scrollbar-thumb {
@@ -236,6 +268,21 @@ img {
 .site-nav.active .site-nav-label::after {
   transform: scaleX(1);
   transform-origin: left;
+}
+
+/* Dark-mode toggle: styled as one more nav item. It shows the moon and
+   "Dark mode" in light theme, the sun and "Light mode" in dark theme. */
+.site-nav.theme-toggle {
+  margin-top: 28px;
+  font-family: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+:root:not([data-theme='dark']) .theme-toggle :is(.icon-sun, .label-light),
+:root[data-theme='dark'] .theme-toggle :is(.icon-moon, .label-dark) {
+  display: none !important;
 }
 
 .bottom-container {
@@ -425,7 +472,7 @@ img {
   font-size: 0.9em;
   color: var(--muted);
   background: var(--surface);
-  border: 1px solid #dee2e6;
+  border: 1px solid var(--line);
   border-radius: 3px;
 }
 
@@ -470,7 +517,7 @@ img {
 .post-content td,
 .post-content th {
   padding: 0.6em 1em;
-  border: 1px solid #dfe2e5;
+  border: 1px solid var(--line);
 }
 
 .post-content em {
@@ -481,7 +528,7 @@ img {
   height: 0;
   margin: 0 0 24px;
   border: 0;
-  border-top: 2px solid #efefef;
+  border-top: 2px solid var(--hr);
 }
 
 /* Tags */
@@ -500,7 +547,7 @@ img {
 
 .tag:hover {
   color: var(--text);
-  background: #dee2e6;
+  background: var(--surface-hover);
   transform: translateY(-3px);
 }
 

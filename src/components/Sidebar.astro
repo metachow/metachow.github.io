@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { faArchive, faFeatherAlt, faRss, faTags, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faArchive, faFeatherAlt, faMoon, faRss, faSun, faTags, faUser } from '@fortawesome/free-solid-svg-icons';
 import FaIcon from './FaIcon.astro';
 import avatar from '../assets/avatar.png';
 import { NAV, SITE_DESCRIPTION, SITE_TITLE } from '../consts';
@@ -42,6 +42,11 @@ function isActive(href: string): boolean {
           );
         })
       }
+      <button class="site-nav theme-toggle" type="button" aria-label="Toggle dark mode" style={`--i: ${NAV.length}`}>
+        <FaIcon icon={faMoon} class="site-nav-icon icon-moon" size={18} />
+        <FaIcon icon={faSun} class="site-nav-icon icon-sun" size={18} />
+        <span class="site-nav-label"><span class="label-dark">Dark mode</span><span class="label-light">Light mode</span></span>
+      </button>
     </nav>
   </div>
   <div class="bottom-container">
@@ -59,5 +64,39 @@ function isActive(href: string): boolean {
   button.addEventListener('click', () => {
     const open = sidebar.classList.toggle('full-height');
     button.setAttribute('aria-expanded', String(open));
+  });
+
+  // Theme: the inline script in Base.astro sets data-theme before first paint.
+  const root = document.documentElement;
+  const toggle = sidebar.querySelector<HTMLButtonElement>('.theme-toggle')!;
+  const systemDark = matchMedia('(prefers-color-scheme: dark)');
+
+  function storedTheme(): string | null {
+    try {
+      return localStorage.getItem('theme');
+    } catch {
+      return null;
+    }
+  }
+
+  function applyTheme(theme: 'light' | 'dark') {
+    root.dataset.theme = theme;
+    toggle.setAttribute('aria-pressed', String(theme === 'dark'));
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#17191c' : '#f8f9fa');
+  }
+
+  applyTheme(root.dataset.theme === 'dark' ? 'dark' : 'light');
+
+  toggle.addEventListener('click', () => {
+    const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    try {
+      localStorage.setItem('theme', next);
+    } catch {}
+  });
+
+  // Keep following the system until the reader picks a theme themselves.
+  systemDark.addEventListener('change', (e) => {
+    if (!storedTheme()) applyTheme(e.matches ? 'dark' : 'light');
   });
 </script>
