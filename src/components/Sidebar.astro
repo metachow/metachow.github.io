@@ -42,10 +42,16 @@ function isActive(href: string): boolean {
           );
         })
       }
-      <button class="site-nav theme-toggle" type="button" aria-label="Toggle dark mode" style={`--i: ${NAV.length}`}>
-        <FaIcon icon={faMoon} class="site-nav-icon icon-moon" size={18} />
-        <FaIcon icon={faSun} class="site-nav-icon icon-sun" size={18} />
-        <span class="site-nav-label"><span class="label-dark">Dark mode</span><span class="label-light">Light mode</span></span>
+      <button class="site-nav theme-toggle" type="button" role="switch" aria-checked="false" style={`--i: ${NAV.length}`}>
+        <span class="theme-switch-slot">
+          <span class="theme-switch" aria-hidden="true">
+            <span class="theme-switch-knob">
+              <FaIcon icon={faSun} class="icon-sun" size={11} />
+              <FaIcon icon={faMoon} class="icon-moon" size={10} />
+            </span>
+          </span>
+        </span>
+        <span class="site-nav-label">Dark mode</span>
       </button>
     </nav>
   </div>
@@ -81,7 +87,7 @@ function isActive(href: string): boolean {
 
   function applyTheme(theme: 'light' | 'dark') {
     root.dataset.theme = theme;
-    toggle.setAttribute('aria-pressed', String(theme === 'dark'));
+    toggle.setAttribute('aria-checked', String(theme === 'dark'));
     document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#17191c' : '#f8f9fa');
   }
 
