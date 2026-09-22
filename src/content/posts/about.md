@@ -7,10 +7,6 @@ listed: false
 
 > Welcome, It's good to meet you here！
 
-## 🏠 About This Site
-
-Powered by [Astro](https://astro.build).
-
 ## 👨‍💻 Who am I
 
 Simply, you can just call me Martin.  
@@ -64,3 +60,7 @@ Dark Souls etc.
 
 WkhPVS5ZaW5nY2hlbmdAbmltcy5nby5qcA==  
 [NIMS SAMURAI profile](https://samurai.nims.go.jp/profiles/zhou_yingcheng?locale=en)
+
+## 🏠 About This Site
+
+Powered by [Astro](https://astro.build).
