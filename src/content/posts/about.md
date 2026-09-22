@@ -28,9 +28,12 @@ Materials Science and Engineering, NIMS
 
 ## 🔬 Research
 
-[Olfactory Sensors Group](https://y-genki.net/), NIMS (2022 - )  
+[Olfactory Sensors Group](https://y-genki.net/), NIMS (2022 - )
+
+## 🏅 Scholarships
+
 [NIMS Junior Researcher](https://www.nims.go.jp/tsukuba/en/junior/) (2022 - )  
-[JST SPRING Fellow](https://www.jst.go.jp/jisedai/spring/en/index.html) (2024 - )
+[JST SPRING Fellowship](https://www.jst.go.jp/jisedai/spring/en/index.html) (2024 - )
 
 ## 🗣 Language
 
