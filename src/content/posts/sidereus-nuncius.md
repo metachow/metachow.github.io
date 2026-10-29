@@ -18,9 +18,23 @@ description: 从 Internet Archive 的一份扫描出发，和 Claude 一起把�
 
 一句话：**每一页对应 1610 年初版的一页**。左栏是现代拼写的拉丁文，断页的位置和初版完全一致；右栏是直接从拉丁文译出的新译文。现在有三个版本：拉丁文—中文、拉丁文—英语，以及拉丁文—日语（『星界の使者』）。
 
-下面是书名页。左起：初版扫描、中文版、英语版、日语版。
+下面是书名页。左边是 1610 年初版的原始扫描（没有去黄，右上角还有图书馆的索书号），右边是重排版。拖动中间的分隔线可以对比，下面的按钮可以切换中文、英语、日语三个版本。
 
-![书名页对照：1610 年初版、中文版、英语版、日语版](../../assets/posts/sidereus-nuncius/compare-1r.jpg)
+<figure class="compare">
+<div class="compare-stage">
+<img class="compare-after" src="/posts/sidereus-nuncius/compare/f01r-zh.webp" data-src-zh="/posts/sidereus-nuncius/compare/f01r-zh.webp" data-src-en="/posts/sidereus-nuncius/compare/f01r-en.webp" data-src-ja="/posts/sidereus-nuncius/compare/f01r-ja.webp" alt="重排版 f01r" width="1100" height="1546" loading="lazy">
+<img class="compare-before" src="/posts/sidereus-nuncius/compare/f01r-scan.webp" alt="1610 年初版扫描 f01r" width="1100" height="1546" loading="lazy">
+<span class="compare-tag compare-tag-before">1610 初版</span>
+<span class="compare-tag compare-tag-after">中文版</span>
+<input class="compare-range" type="range" min="0" max="100" value="50" aria-label="拖动分隔线对比初版与重排版">
+</div>
+<div class="compare-tabs">
+<button type="button" data-ed="zh" data-label="中文版" aria-pressed="true">中文</button>
+<button type="button" data-ed="en" data-label="英语版" aria-pressed="false">English</button>
+<button type="button" data-ed="ja" data-label="日语版" aria-pressed="false">日本語</button>
+</div>
+<figcaption>书名页 [1r]</figcaption>
+</figure>
 
 初版用了好几种字体：罗马体、带花式大写的意大利斜体、字距拉开的大写字母，还有大号的标题大写。重排时每一种都对应了下来。拉丁文用 EB Garamond（一款复刻 16 世纪 Garamond 的字体），中文用宋体、楷体（对应斜体）和粗体（对应大写强调），日语则是明朝体、教科书体和傍点。
 
@@ -30,11 +44,55 @@ description: 从 Internet Archive 的一份扫描出发，和 Claude 一起把�
 
 去黄没有用什么花哨的方法：给纸张的颜色拟合一个平滑的曲面，再除掉它，墨色就留下来了。我们刻意**没有用 AI 超分辨率**处理铜版画。AI 会"脑补"出看起来更清楚、但伽利略的刻工从没刻过的线条，对一本复刻本来说，这比模糊更糟。几幅月面图上有书页的折痕，是从邻近的完好区域拷贝图块补上的。
 
-![月面铜版画：去黄、修补折痕后按原尺寸排入](../../assets/posts/sidereus-nuncius/compare-10v.jpg)
+<figure class="compare">
+<div class="compare-stage">
+<img class="compare-after" src="/posts/sidereus-nuncius/compare/f10v-zh.webp" data-src-zh="/posts/sidereus-nuncius/compare/f10v-zh.webp" data-src-en="/posts/sidereus-nuncius/compare/f10v-en.webp" data-src-ja="/posts/sidereus-nuncius/compare/f10v-ja.webp" alt="重排版 f10v" width="1100" height="1546" loading="lazy">
+<img class="compare-before" src="/posts/sidereus-nuncius/compare/f10v-scan.webp" alt="1610 年初版扫描 f10v" width="1100" height="1546" loading="lazy">
+<span class="compare-tag compare-tag-before">1610 初版</span>
+<span class="compare-tag compare-tag-after">中文版</span>
+<input class="compare-range" type="range" min="0" max="100" value="50" aria-label="拖动分隔线对比初版与重排版">
+</div>
+<div class="compare-tabs">
+<button type="button" data-ed="zh" data-label="中文版" aria-pressed="true">中文</button>
+<button type="button" data-ed="en" data-label="英语版" aria-pressed="false">English</button>
+<button type="button" data-ed="ja" data-label="日语版" aria-pressed="false">日本語</button>
+</div>
+<figcaption>月面铜版画 [10v]：右边是去黄、修补折痕后排入的版本</figcaption>
+</figure>
 
 星图和木星卫星图则是另一种处理：在扫描上逐颗星测量坐标，再用 TikZ 重绘成矢量图。星的数量和伽利略正文里说的一致，旧星画成双线大星、新发现的画成单线小星，也照初版。
 
-![猎户头部星云与鬼星团，逐星测量后重绘](../../assets/posts/sidereus-nuncius/chart-16bv.jpg)
+<figure class="compare">
+<div class="compare-stage">
+<img class="compare-after" src="/posts/sidereus-nuncius/compare/f16bv-zh.webp" data-src-zh="/posts/sidereus-nuncius/compare/f16bv-zh.webp" data-src-en="/posts/sidereus-nuncius/compare/f16bv-en.webp" data-src-ja="/posts/sidereus-nuncius/compare/f16bv-ja.webp" alt="重排版 f16bv" width="1100" height="1546" loading="lazy">
+<img class="compare-before" src="/posts/sidereus-nuncius/compare/f16bv-scan.webp" alt="1610 年初版扫描 f16bv" width="1100" height="1546" loading="lazy">
+<span class="compare-tag compare-tag-before">1610 初版</span>
+<span class="compare-tag compare-tag-after">中文版</span>
+<input class="compare-range" type="range" min="0" max="100" value="50" aria-label="拖动分隔线对比初版与重排版">
+</div>
+<div class="compare-tabs">
+<button type="button" data-ed="zh" data-label="中文版" aria-pressed="true">中文</button>
+<button type="button" data-ed="en" data-label="英语版" aria-pressed="false">English</button>
+<button type="button" data-ed="ja" data-label="日语版" aria-pressed="false">日本語</button>
+</div>
+<figcaption>星图 [16b v]：猎户头部星云与鬼星团，逐星测量后重绘</figcaption>
+</figure>
+
+<figure class="compare">
+<div class="compare-stage">
+<img class="compare-after" src="/posts/sidereus-nuncius/compare/f17v-zh.webp" data-src-zh="/posts/sidereus-nuncius/compare/f17v-zh.webp" data-src-en="/posts/sidereus-nuncius/compare/f17v-en.webp" data-src-ja="/posts/sidereus-nuncius/compare/f17v-ja.webp" alt="重排版 f17v" width="1100" height="1546" loading="lazy">
+<img class="compare-before" src="/posts/sidereus-nuncius/compare/f17v-scan.webp" alt="1610 年初版扫描 f17v" width="1100" height="1546" loading="lazy">
+<span class="compare-tag compare-tag-before">1610 初版</span>
+<span class="compare-tag compare-tag-after">中文版</span>
+<input class="compare-range" type="range" min="0" max="100" value="50" aria-label="拖动分隔线对比初版与重排版">
+</div>
+<div class="compare-tabs">
+<button type="button" data-ed="zh" data-label="中文版" aria-pressed="true">中文</button>
+<button type="button" data-ed="en" data-label="英语版" aria-pressed="false">English</button>
+<button type="button" data-ed="ja" data-label="日语版" aria-pressed="false">日本語</button>
+</div>
+<figcaption>木星卫星观测 [17v]：1610 年 1 月的记录，木星图按初版坐标重绘</figcaption>
+</figure>
 
 ## 先有文字，再有页面
 
@@ -62,11 +120,39 @@ description: 从 Internet Archive 的一份扫描出发，和 Claude 一起把�
 
 **倒三角收尾。** 初版最后一页的正文排成一个倒三角，最后几行越来越窄。我问能不能模仿，Claude 写了一个宏，靠反复试排来决定前面有几行满行。第一版的三角形尖端只剩一个被断开的单词碎片，第二版左边对齐了、右边没有，到第三版才让最后一行真正居中。
 
-![结尾的倒三角：四个版本的尖端都居中](../../assets/posts/sidereus-nuncius/compare-28v.jpg)
+<figure class="compare">
+<div class="compare-stage">
+<img class="compare-after" src="/posts/sidereus-nuncius/compare/f28v-zh.webp" data-src-zh="/posts/sidereus-nuncius/compare/f28v-zh.webp" data-src-en="/posts/sidereus-nuncius/compare/f28v-en.webp" data-src-ja="/posts/sidereus-nuncius/compare/f28v-ja.webp" alt="重排版 f28v" width="1100" height="1546" loading="lazy">
+<img class="compare-before" src="/posts/sidereus-nuncius/compare/f28v-scan.webp" alt="1610 年初版扫描 f28v" width="1100" height="1546" loading="lazy">
+<span class="compare-tag compare-tag-before">1610 初版</span>
+<span class="compare-tag compare-tag-after">中文版</span>
+<input class="compare-range" type="range" min="0" max="100" value="50" aria-label="拖动分隔线对比初版与重排版">
+</div>
+<div class="compare-tabs">
+<button type="button" data-ed="zh" data-label="中文版" aria-pressed="true">中文</button>
+<button type="button" data-ed="en" data-label="英语版" aria-pressed="false">English</button>
+<button type="button" data-ed="ja" data-label="日语版" aria-pressed="false">日本語</button>
+</div>
+<figcaption>结尾的倒三角 [28v]</figcaption>
+</figure>
 
 **中文的首字母。** 拉丁文献词和正文开头用的是初版的木刻首字母；英语栏找到了 TeX Live 自带的装饰首字母字体 Goudy Initialen，构造和文艺复兴时期的木刻首字母一样。中文没有首字母，我们用脚本生成了"木刻风格"的大字：方框、斜线底纹、做旧的墨色和缺损。一开始有的用楷体，字也偏小；后来我注意到拉丁文的装饰字始终是普通的罗马正体，而且撑满边框，于是改成了宋体粗体、放大到占满框内。
 
-![献词首页：初版的木刻首字母 P，和中文、英语、日语各自的装饰首字](../../assets/posts/sidereus-nuncius/compare-2r.jpg)
+<figure class="compare">
+<div class="compare-stage">
+<img class="compare-after" src="/posts/sidereus-nuncius/compare/f02r-zh.webp" data-src-zh="/posts/sidereus-nuncius/compare/f02r-zh.webp" data-src-en="/posts/sidereus-nuncius/compare/f02r-en.webp" data-src-ja="/posts/sidereus-nuncius/compare/f02r-ja.webp" alt="重排版 f02r" width="1100" height="1546" loading="lazy">
+<img class="compare-before" src="/posts/sidereus-nuncius/compare/f02r-scan.webp" alt="1610 年初版扫描 f02r" width="1100" height="1546" loading="lazy">
+<span class="compare-tag compare-tag-before">1610 初版</span>
+<span class="compare-tag compare-tag-after">中文版</span>
+<input class="compare-range" type="range" min="0" max="100" value="50" aria-label="拖动分隔线对比初版与重排版">
+</div>
+<div class="compare-tabs">
+<button type="button" data-ed="zh" data-label="中文版" aria-pressed="true">中文</button>
+<button type="button" data-ed="en" data-label="英语版" aria-pressed="false">English</button>
+<button type="button" data-ed="ja" data-label="日语版" aria-pressed="false">日本語</button>
+</div>
+<figcaption>献词首页 [2r]：初版的木刻首字母 P，和各版本的装饰首字</figcaption>
+</figure>
 
 **断页。** 英语和拉丁文语序接近，英译可以在初版断页的位置精确断开。日语版第一次排出来时，我翻了几页就发现很多页的右栏开头是一片空白：跨页的句子被整句放在了前一页，后一页的拉丁文续句旁边什么都没有。后来在日语里找到最接近的分句处断开，问题就解决了。
 

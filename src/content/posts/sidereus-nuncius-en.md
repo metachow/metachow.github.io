@@ -18,9 +18,23 @@ That turned into a long project with Claude (Anthropic's AI). The result is on G
 
 In one sentence: **every page corresponds to one page of the 1610 edition.** On the left is the Latin in modernised spelling, breaking exactly where the original does; on the right a new translation made directly from the Latin. There are now three editions: Latin–Chinese, Latin–English and Latin–Japanese.
 
-Here is the title page. From left: the 1610 scan, then the Chinese, English and Japanese editions.
+Here is the title page: on the left the raw 1610 scan (not cleaned; the library's call number is still pencilled in the corner), on the right the new edition. Drag the divider to compare, and use the buttons to switch between the Chinese, English and Japanese editions.
 
-![Title page: the 1610 edition beside the Chinese, English and Japanese editions](../../assets/posts/sidereus-nuncius/compare-1r.jpg)
+<figure class="compare">
+<div class="compare-stage">
+<img class="compare-after" src="/posts/sidereus-nuncius/compare/f01r-en.webp" data-src-zh="/posts/sidereus-nuncius/compare/f01r-zh.webp" data-src-en="/posts/sidereus-nuncius/compare/f01r-en.webp" data-src-ja="/posts/sidereus-nuncius/compare/f01r-ja.webp" alt="New edition f01r" width="1100" height="1546" loading="lazy">
+<img class="compare-before" src="/posts/sidereus-nuncius/compare/f01r-scan.webp" alt="1610 scan f01r" width="1100" height="1546" loading="lazy">
+<span class="compare-tag compare-tag-before">1610</span>
+<span class="compare-tag compare-tag-after">English edition</span>
+<input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Drag to compare the 1610 print with the new edition">
+</div>
+<div class="compare-tabs">
+<button type="button" data-ed="zh" data-label="Chinese edition" aria-pressed="false">中文</button>
+<button type="button" data-ed="en" data-label="English edition" aria-pressed="true">English</button>
+<button type="button" data-ed="ja" data-label="Japanese edition" aria-pressed="false">日本語</button>
+</div>
+<figcaption>Title page [1r]</figcaption>
+</figure>
 
 The original mixes several kinds of type: roman, italic with swash capitals, letter-spaced capitals for emphasis, and large display capitals. Each kept its role. The Latin is set in EB Garamond, a revival of the 16th-century Garamond. In Chinese the roles map to Song, Kai (for italic) and bold (for the spaced capitals); in Japanese to Mincho, a textbook face, and *bouten*, the dots Japanese puts beside a word for emphasis.
 
@@ -30,11 +44,55 @@ The first trap was the scan itself. The PDF the Internet Archive serves by defau
 
 Removing the yellowing needed nothing fancy: fit a smooth surface to the colour of the paper and divide it out, and the ink is what remains. We deliberately **did not use AI super-resolution** on the engravings. It invents lines that look sharper but that Galileo's engraver never cut, and for a facsimile that is worse than blur. Where a fold crossed a Moon plate, the crease was patched with blocks copied from intact areas nearby.
 
-![The Moon engraving, cleaned and repaired, at its original size](../../assets/posts/sidereus-nuncius/compare-10v.jpg)
+<figure class="compare">
+<div class="compare-stage">
+<img class="compare-after" src="/posts/sidereus-nuncius/compare/f10v-en.webp" data-src-zh="/posts/sidereus-nuncius/compare/f10v-zh.webp" data-src-en="/posts/sidereus-nuncius/compare/f10v-en.webp" data-src-ja="/posts/sidereus-nuncius/compare/f10v-ja.webp" alt="New edition f10v" width="1100" height="1546" loading="lazy">
+<img class="compare-before" src="/posts/sidereus-nuncius/compare/f10v-scan.webp" alt="1610 scan f10v" width="1100" height="1546" loading="lazy">
+<span class="compare-tag compare-tag-before">1610</span>
+<span class="compare-tag compare-tag-after">English edition</span>
+<input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Drag to compare the 1610 print with the new edition">
+</div>
+<div class="compare-tabs">
+<button type="button" data-ed="zh" data-label="Chinese edition" aria-pressed="false">中文</button>
+<button type="button" data-ed="en" data-label="English edition" aria-pressed="true">English</button>
+<button type="button" data-ed="ja" data-label="Japanese edition" aria-pressed="false">日本語</button>
+</div>
+<figcaption>The Moon engraving [10v], cleaned and repaired on the right</figcaption>
+</figure>
 
 The star maps and the diagrams of Jupiter's moons were handled differently: every star was measured on the scan and redrawn as vector graphics in TikZ. The star counts match Galileo's text, and the old stars are drawn as large double-outlined stars and the new ones as small single-outlined stars, as in the original.
 
-![The Nebula of Orion's Head and Praesepe, redrawn star by star](../../assets/posts/sidereus-nuncius/chart-16bv.jpg)
+<figure class="compare">
+<div class="compare-stage">
+<img class="compare-after" src="/posts/sidereus-nuncius/compare/f16bv-en.webp" data-src-zh="/posts/sidereus-nuncius/compare/f16bv-zh.webp" data-src-en="/posts/sidereus-nuncius/compare/f16bv-en.webp" data-src-ja="/posts/sidereus-nuncius/compare/f16bv-ja.webp" alt="New edition f16bv" width="1100" height="1546" loading="lazy">
+<img class="compare-before" src="/posts/sidereus-nuncius/compare/f16bv-scan.webp" alt="1610 scan f16bv" width="1100" height="1546" loading="lazy">
+<span class="compare-tag compare-tag-before">1610</span>
+<span class="compare-tag compare-tag-after">English edition</span>
+<input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Drag to compare the 1610 print with the new edition">
+</div>
+<div class="compare-tabs">
+<button type="button" data-ed="zh" data-label="Chinese edition" aria-pressed="false">中文</button>
+<button type="button" data-ed="en" data-label="English edition" aria-pressed="true">English</button>
+<button type="button" data-ed="ja" data-label="Japanese edition" aria-pressed="false">日本語</button>
+</div>
+<figcaption>Star maps [16b v]: the Nebula of Orion’s Head and Praesepe, redrawn star by star</figcaption>
+</figure>
+
+<figure class="compare">
+<div class="compare-stage">
+<img class="compare-after" src="/posts/sidereus-nuncius/compare/f17v-en.webp" data-src-zh="/posts/sidereus-nuncius/compare/f17v-zh.webp" data-src-en="/posts/sidereus-nuncius/compare/f17v-en.webp" data-src-ja="/posts/sidereus-nuncius/compare/f17v-ja.webp" alt="New edition f17v" width="1100" height="1546" loading="lazy">
+<img class="compare-before" src="/posts/sidereus-nuncius/compare/f17v-scan.webp" alt="1610 scan f17v" width="1100" height="1546" loading="lazy">
+<span class="compare-tag compare-tag-before">1610</span>
+<span class="compare-tag compare-tag-after">English edition</span>
+<input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Drag to compare the 1610 print with the new edition">
+</div>
+<div class="compare-tabs">
+<button type="button" data-ed="zh" data-label="Chinese edition" aria-pressed="false">中文</button>
+<button type="button" data-ed="en" data-label="English edition" aria-pressed="true">English</button>
+<button type="button" data-ed="ja" data-label="Japanese edition" aria-pressed="false">日本語</button>
+</div>
+<figcaption>Jupiter’s moons [17v]: the January 1610 log, the diagrams redrawn from the original’s coordinates</figcaption>
+</figure>
 
 ## Text first, pages second
 
@@ -62,11 +120,39 @@ Most of the code, translation and typesetting was done by Claude. What I did mos
 
 **The tapered ending.** The last page of the 1610 text ends as an inverted triangle, its last lines narrowing step by step. I asked whether we could imitate it, and Claude wrote a macro that finds by trial typesetting how many full lines to set before the taper. In the first version the point of the triangle was the stray tail of a hyphenated word; in the second the left side lined up but the right did not; only the third really centred the last line.
 
-![The tapered ending, centred in all four versions](../../assets/posts/sidereus-nuncius/compare-28v.jpg)
+<figure class="compare">
+<div class="compare-stage">
+<img class="compare-after" src="/posts/sidereus-nuncius/compare/f28v-en.webp" data-src-zh="/posts/sidereus-nuncius/compare/f28v-zh.webp" data-src-en="/posts/sidereus-nuncius/compare/f28v-en.webp" data-src-ja="/posts/sidereus-nuncius/compare/f28v-ja.webp" alt="New edition f28v" width="1100" height="1546" loading="lazy">
+<img class="compare-before" src="/posts/sidereus-nuncius/compare/f28v-scan.webp" alt="1610 scan f28v" width="1100" height="1546" loading="lazy">
+<span class="compare-tag compare-tag-before">1610</span>
+<span class="compare-tag compare-tag-after">English edition</span>
+<input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Drag to compare the 1610 print with the new edition">
+</div>
+<div class="compare-tabs">
+<button type="button" data-ed="zh" data-label="Chinese edition" aria-pressed="false">中文</button>
+<button type="button" data-ed="en" data-label="English edition" aria-pressed="true">English</button>
+<button type="button" data-ed="ja" data-label="Japanese edition" aria-pressed="false">日本語</button>
+</div>
+<figcaption>The tapered ending [28v]</figcaption>
+</figure>
 
 **Decorated initials.** The Latin uses the original woodcut initials. For the English column we found Goudy Initialen, a decorated-initial font that ships with TeX Live and is built like a Renaissance woodcut initial. Chinese and Japanese have no initial letters, so a script renders the first character as a woodblock: a ruled square, hatched ground, uneven ink, worn edges. At first some were in Kai and the characters looked small. Then I noticed that the Latin woodcut letters are always plain roman capitals filling their frames, so we switched to a bold Song face scaled to fill the block.
 
-![The dedication: the 1610 woodcut P, and the decorated initials of each edition](../../assets/posts/sidereus-nuncius/compare-2r.jpg)
+<figure class="compare">
+<div class="compare-stage">
+<img class="compare-after" src="/posts/sidereus-nuncius/compare/f02r-en.webp" data-src-zh="/posts/sidereus-nuncius/compare/f02r-zh.webp" data-src-en="/posts/sidereus-nuncius/compare/f02r-en.webp" data-src-ja="/posts/sidereus-nuncius/compare/f02r-ja.webp" alt="New edition f02r" width="1100" height="1546" loading="lazy">
+<img class="compare-before" src="/posts/sidereus-nuncius/compare/f02r-scan.webp" alt="1610 scan f02r" width="1100" height="1546" loading="lazy">
+<span class="compare-tag compare-tag-before">1610</span>
+<span class="compare-tag compare-tag-after">English edition</span>
+<input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Drag to compare the 1610 print with the new edition">
+</div>
+<div class="compare-tabs">
+<button type="button" data-ed="zh" data-label="Chinese edition" aria-pressed="false">中文</button>
+<button type="button" data-ed="en" data-label="English edition" aria-pressed="true">English</button>
+<button type="button" data-ed="ja" data-label="Japanese edition" aria-pressed="false">日本語</button>
+</div>
+<figcaption>The dedication [2r]: the 1610 woodcut P and each edition’s decorated initial</figcaption>
+</figure>
 
 **Page breaks.** English word order is close enough to Latin that the English can break exactly where the 1610 page breaks. The first build of the Japanese edition looked wrong after a few pages: many pages began with a blank right column. A sentence running across a page had been placed whole on the earlier page, leaving nothing beside the Latin continuation. Splitting the Japanese at the nearest matching clause fixed it.
 
