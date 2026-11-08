@@ -2,6 +2,7 @@
 title: "细菌怎样“数”分子：化学感受的物理"
 date: 2026-11-08
 tags: [biophysics, papers, interactive]
+cover: ../../assets/posts/berg-purcell-1977/cover.png
 description: 一个两微米长的大肠杆菌，怎么知道哪边的糖更多？跟着 Berg 与 Purcell 1977 年的经典论证，从扩散一路推到细菌感知能力的物理极限。文中的图都可以动手调。
 ---
 

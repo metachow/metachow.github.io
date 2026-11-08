@@ -2,6 +2,7 @@
 title: "How a bacterium counts molecules: the physics of chemoreception"
 date: 2026-11-08
 tags: [biophysics, papers, interactive]
+cover: ../../assets/posts/berg-purcell-1977/cover.png
 description: How does a two-micrometre E. coli know which way the sugar is? Follow Berg and Purcell's classic 1977 argument from diffusion all the way to the physical limit on what a cell can sense. Every figure can be played with.
 ---
 
