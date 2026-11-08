@@ -28,7 +28,10 @@ const { Content } = await render(post);
 <Base title={post.data.title} description={excerpt(post)}>
   <article class="post-detail">
     <h1 class="post-title">{post.data.title}</h1>
-    <time class="post-date" datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+    <div class="post-date">
+      <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+      <span class="post-views" data-path={`/post/${post.id}/`} hidden> · <span class="n"></span> views</span>
+    </div>
     {post.data.cover && <Image src={post.data.cover} alt="" widths={[720, 1440]} sizes="(max-width: 800px) 100vw, 720px" class="feature-container" loading="eager" />}
     <div class="post-content">
       <Content />
@@ -49,4 +52,19 @@ const { Content } = await render(post);
       )
     }
   </article>
+  <script is:inline>
+    // Fill in the read count from GoatCounter's public counter; stays hidden if
+    // the request fails or is blocked.
+    (() => {
+      const el = document.querySelector('.post-views');
+      if (!el) return;
+      fetch(`https://metachow.goatcounter.com/counter/${encodeURIComponent(el.dataset.path)}.json`)
+        .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+        .then((d) => {
+          el.querySelector('.n').textContent = d.count;
+          el.hidden = false;
+        })
+        .catch(() => {});
+    })();
+  </script>
 </Base>
